@@ -2,21 +2,28 @@ package GameCharacter;
 
 public class GameCharacter {
     private String name;
+    private AttackStrategy attackStrategy;
+    private DefendStrategy defendStrategy;
 
-    // TODO: Add strategy interface fields
-
-    public GameCharacter(String name) {
+    public GameCharacter(String name, AttackStrategy attackStrategy, DefendStrategy defendStrategy) {
         this.name = name;
-        // TODO: Assign strategy via constructor
+        this.attackStrategy = attackStrategy;
+        this.defendStrategy = defendStrategy;
     }
 
     public void performAttack() {
-        System.out.println("Basic attack"); // TODO: Delegate attack behavior to the attack strategy
+        attackStrategy.attack();
     }
 
     public void performDefend() {
-        System.out.println("Basic defense"); // TODO: Delegate defend behavior to the defend strategy
+        defendStrategy.defend();
     }
 
-    // TODO: Implement the rest of the character class according to the Strategy Pattern (setter for the Strategy)
+    public void setAttackStrategy(AttackStrategy attackStrategy) {
+        this.attackStrategy = attackStrategy;
+    }
+
+    public void setDefendStrategy(DefendStrategy defendStrategy) {
+        this.defendStrategy = defendStrategy;
+    }
 }
